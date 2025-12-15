@@ -17,5 +17,44 @@ get_key:
     // get first character from the buffer
     lda BUFFER
 
+    // shift buffer up
+    jsr shift_buffer
+
+    rts
+// ==========================================
+
+
+// ==========================================
+// Move key buffer up one place
+// ------------------------------------------
+// BUFFER_SIZE must be > 0
+// ==========================================
+shift_buffer:
+    // disable interrupts
+    sei
+
+    // save A to Y
+    tay
+
+    ldx #0
+
+    // move buffer up
+!:  lda BUFFER+1,X
+    sta BUFFER,X
+
+    // loop through buffer
+    inx
+    cpx BUFFER_SIZE
+    bne !-
+
+    // decrement buffer size
+    dec BUFFER_SIZE
+
+    // restore A from Y
+    tya
+
+    // enable interrupts
+    cli
+
     rts
 // ==========================================
