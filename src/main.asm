@@ -6,11 +6,15 @@ jmp main
 
 #import "get_key.asm"
 
+.const RETURN_KEY = $0d
+
 
 *=* "Main"
 // ==========================================
 main:
     jsr get_key
     jsr $ffd2
+    cmp #RETURN_KEY
+    bne main
     rts
 // ==========================================
