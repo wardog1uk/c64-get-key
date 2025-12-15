@@ -1,0 +1,13 @@
+{
+    "name": "c64-get-key",
+    "description": "C64 Get Key",
+    "toolkit": "kick",
+    "sources": [
+        "src/main.asm"
+    ],
+    "build": "debug",
+    "definitions": [],
+    "includes": [],
+    "args": [],
+    "compiler": ""
+}
