@@ -14,24 +14,10 @@ get_key:
     lda BUFFER_SIZE
     beq get_key
 
-    // shift buffer up
-    jsr shift_buffer
-
-    rts
-// ==========================================
-
-
-// ==========================================
-// Move key buffer up one place
-// ------------------------------------------
-// Returns first buffer character in A
-// BUFFER_SIZE must be > 0
-// ==========================================
-shift_buffer:
     // disable interrupts
     sei
 
-    // get first character from the buffer
+    // save first character from the buffer
     ldy BUFFER
 
     ldx #0
@@ -45,7 +31,7 @@ shift_buffer:
     cpx BUFFER_SIZE
     bne !-
 
-    // decrement buffer size
+    // update buffer size
     dec BUFFER_SIZE
 
     // move character to A
