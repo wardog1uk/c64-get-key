@@ -12,6 +12,10 @@ jmp main
 *=* "Main"
 // ==========================================
 main:
+    // enable cursor blink
+    lda #0
+    sta $cc
+
     jsr get_key
     jsr $ffd2
     cmp #RETURN_KEY
